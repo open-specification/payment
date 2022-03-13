@@ -48,11 +48,9 @@ fn get_luhn(request_data:request::Request) -> response::Response {
     for digit in other_digits {
 
         real_digits.push((*digit as u8) - ('0' as u8));
-        index = index + 1;
 
     }
 
-    index = 0;
     for mut digit in real_digits {
         
         if (index % 2 == 0) {
