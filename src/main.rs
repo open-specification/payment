@@ -7,6 +7,8 @@ use std::thread;
 mod response;
 mod request;
 
+mod payment;
+
 fn main() {
     let listener = TcpListener::bind("127.0.0.1:8080").unwrap();
 
@@ -31,49 +33,14 @@ fn bad_format() -> response::Response {
 
 fn get_luhn(request_data:request::Request) -> response::Response {
 
+    // Get the Credit Card Number from the Path
     let request_parts: Vec<&str> = request_data.path.split('/').collect();
-
     if request_parts.len() < 3 { return bad_format(); }
-
     let credit_number:&str = request_parts[2];
-
     if credit_number.len() == 0 { return bad_format(); }
 
-    let all_digits:Vec<char> = credit_number.chars().collect();
-    let digit_count = all_digits.len();
-    let last_digit = all_digits[digit_count - 1];
-    let other_digits = &all_digits[0..(digit_count - 1)];
-
-    let mut index = 0;
-    let mut sum = 0;
-
-    for digit in other_digits {
-
-        let mut real_digit = (*digit as u8) - ('0' as u8);
-
-        if index % 2 == 0 {
-
-            real_digit = real_digit * 2;
-
-            if real_digit > 9 {
-
-                let first = real_digit % 10;
-                let second = real_digit / 10;
-
-                real_digit = first + second;
-
-            } 
-
-        }
-
-        index = index + 1;
-        sum = sum + real_digit;
-
-    }
-
-    let sum_digit = ((sum % 10) + ('0' as u8)) as char;
-
-    if sum_digit == last_digit {
+    // Return Valid or Invalid
+    if payment::luhn_method(credit_number) {
 
         return response::Response {
             response_code: 200,
