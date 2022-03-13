@@ -43,7 +43,7 @@ fn get_luhn(request_data:request::Request) -> response::Response {
     let all_digits:Vec<char> = credit_number.chars().collect();
     let digit_count = all_digits.len();
     let last_digit = all_digits[digit_count - 1];
-    let mut other_digits = &all_digits[0..(digit_count - 1)];
+    let other_digits = &all_digits[0..(digit_count - 1)];
 
     let mut index = 0;
     let mut sum = 0;
