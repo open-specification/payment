@@ -130,6 +130,37 @@ fn get_issuer(request_data:request::Request) -> response::Response {
 
 }
 
+fn get_info(request_data:request::Request) -> response::Response {
+
+    // Get the Credit Card Number from the Path
+    let request_parts: Vec<&str> = request_data.path.split('/').collect();
+    if request_parts.len() < 3 { return bad_format(); }
+    let credit_number:&str = request_parts[2];
+    if credit_number.len() == 0 { return bad_format(); }
+
+    // Get Info about Card Number
+    let industry = payment::get_card_industry(credit_number);
+    let network = payment::get_card_network(credit_number);
+    let issuer = payment::get_issuer(credit_number);
+    let valid = payment::luhn_method(credit_number);
+
+    // Check if its Valid
+    if industry == "" { return bad_format(); }
+    if network == "" { return bad_format(); }
+    if issuer == "" { return bad_format(); }
+
+    // Create the Response Body
+    let body = format!("{{\"industry\":\"{}\", \"network\": \"{}\", \"issuer\": \"{}\", \"valid\": {}}}", industry, network, issuer, valid);
+
+    // Return the Response
+    return response::Response {
+        response_code: 200,
+        body: (body.to_string()),
+        headers: HashMap::from([("Content-Length".to_string(), body.len().to_string()), ("Content-Type".to_string(), "application/json".to_string())])
+    };
+
+}
+
 fn handle_connection(mut stream: TcpStream) {
 
     let mut buffer = [0; 1024];
@@ -145,6 +176,7 @@ fn handle_connection(mut stream: TcpStream) {
         "issuer" => get_issuer(request_data),
         "luhn" => get_luhn(request_data),
         "date" => get_valid_thru(request_data),
+        "info" => get_info(request_data),
         _ => response::Response {
             response_code: 404,
             body: ("Endpoint Not Found".to_string()),

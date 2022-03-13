@@ -51,6 +51,52 @@ pub fn luhn_method(credit_number:&str) -> bool {
 
 }
 
+pub fn get_card_network(credit_number:&str) -> &str {
+
+    // Initialize General Variables
+    let all_digits:Vec<char> = credit_number.chars().collect();
+    if all_digits.len() == 0 { return ""; }
+    let first_digit = all_digits.first().unwrap();
+
+    // Check the Industry
+    match first_digit {
+
+        '3' => "American Express",
+        '4' => "Visa",
+        '5' => "Mastercard",
+        '6' => "Discover",
+        _ => "",
+
+    }
+
+}
+
+pub fn get_card_industry(credit_number:&str) -> &str {
+
+    // Initialize General Variables
+    let all_digits:Vec<char> = credit_number.chars().collect();
+    if all_digits.len() == 0 { return ""; }
+    let first_digit = all_digits.first().unwrap();
+
+    // Check the Industry
+    match first_digit {
+
+        '0' => "ISO/TC 68",
+        '1' => "Airlines",
+        '2' => "Airlines, Financial, Etc.",
+        '3' => "Travel, Entertainment",
+        '4' => "Banking, Financial",
+        '5' => "Banking, Financial",
+        '6' => "Merchandising, Financial",
+        '7' => "Petroleum, Etc.",
+        '8' => "Healthcare, Telecommunications, Etc.",
+        '9' => "National Standards Bodies",
+        _ => "",
+
+    }
+
+}
+
 pub fn get_valid_thru(month:u32, year:u32) -> bool {
 
     // Get the current date

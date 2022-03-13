@@ -21,4 +21,4 @@
 
 ## Licensing
 
-Currently Unlicense; Full Copyright Owned by William Peter McGonagle. Future Code May Be Released Under Open-Source or Closed-Source Licenses.
+See the licensing.md File for more information.
