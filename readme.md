@@ -16,6 +16,9 @@
 1. **Check if the Valid Through Date Works** - `/date/:month/:year/`
     - Blah.
 
+1. **Find Detailed Information about Credit Number** - `/info/:number/`
+    - Blah.
+
 1. **Performance**
     - The power of the Rust Programming Language enables this module to have sub-millisecond response times. Speed may vary depending on your network connection, but the code itself will never be the performance bottleneck.
 
