@@ -49,7 +49,6 @@ pub fn luhn_method(credit_number:&str) -> bool {
 }
 
 pub fn get_issuer(credit_number:&str) -> &str {
-
     
     if credit_number.starts_with("6759") { return "Maestro UK"; }
     if credit_number.starts_with("676770") { return "Maestro UK"; }
