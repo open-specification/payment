@@ -13,6 +13,9 @@
 1. **Get Issuer from Credit Card Number** - `/issuer/:number/`
     - One important piece of information that can be obtained from a credit card number is the issuer. Given the number, the module can identify who the credit card issuer is, or if the credit card issuer does not exist.
 
+1. **Check if the Valid Through Date Works** - `/date/:month/:year/`
+    - Blah.
+
 1. **Performance**
     - The power of the Rust Programming Language enables this module to have sub-millisecond response times. Speed may vary depending on your network connection, but the code itself will never be the performance bottleneck.
 
