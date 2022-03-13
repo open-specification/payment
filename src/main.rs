@@ -38,7 +38,7 @@ fn get_luhn(request_data:request::Request) -> response::Response {
 
     let credit_number:&str = request_parts[2];
 
-    if (credit_number.len() == 0) { return bad_format(); }
+    if credit_number.len() == 0 { return bad_format(); }
 
     let all_digits:Vec<char> = credit_number.chars().collect();
     let digit_count = all_digits.len();
@@ -52,11 +52,11 @@ fn get_luhn(request_data:request::Request) -> response::Response {
 
         let mut real_digit = (*digit as u8) - ('0' as u8);
 
-        if (index % 2 == 0) {
+        if index % 2 == 0 {
 
             real_digit = real_digit * 2;
 
-            if (real_digit > 9) {
+            if real_digit > 9 {
 
                 let first = real_digit % 10;
                 let second = real_digit / 10;
