@@ -40,37 +40,32 @@ fn get_luhn(request_data:request::Request) -> response::Response {
     let digit_count = all_digits.len();
     let last_digit = all_digits[digit_count - 1];
     let mut other_digits = &all_digits[0..(digit_count - 1)];
-    let mut real_digits = Vec::new();
 
     let mut index = 0;
     let mut sum = 0;
 
     for digit in other_digits {
 
-        real_digits.push((*digit as u8) - ('0' as u8));
+        let mut real_digit = (*digit as u8) - ('0' as u8);
 
-    }
-
-    for mut digit in real_digits {
-        
         if (index % 2 == 0) {
 
-            digit = digit * 2;
+            real_digit = real_digit * 2;
 
-            if (digit > 9) {
+            if (real_digit > 9) {
 
-                let first = digit % 10;
-                let second = digit / 10;
+                let first = real_digit % 10;
+                let second = real_digit / 10;
 
-                digit = first + second;
+                real_digit = first + second;
 
             } 
 
         }
 
         index = index + 1;
-        sum = sum + digit;
-        
+        sum = sum + real_digit;
+
     }
 
     let sum_digit = ((sum % 10) + ('0' as u8)) as char;
