@@ -43,14 +43,14 @@ fn get_luhn(request_data:request::Request) -> response::Response {
     let mut real_digits = Vec::new();
 
     let mut index = 0;
+    let mut sum = 0;
+
     for digit in other_digits {
 
         real_digits.push((*digit as u8) - ('0' as u8));
         index = index + 1;
 
     }
-
-    let mut sum = 0;
 
     index = 0;
     for mut digit in real_digits {
