@@ -20,21 +20,25 @@ fn main() {
     }
 }
 
+fn bad_format() {
+
+    return response::Response {
+        response_code: 400,
+        body: ("Bad Format.".to_string()),
+        headers: HashMap::from([("Content-Length".to_string(), "Bad Format.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
+    };
+
+}
+
 fn get_luhn(request_data:request::Request) -> response::Response {
 
     let request_parts: Vec<&str> = request_data.path.split('/').collect();
 
-    if request_parts.len() < 3 { 
-        
-        return response::Response {
-            response_code: 400,
-            body: ("Bad Format.".to_string()),
-            headers: HashMap::from([("Content-Length".to_string(), "Bad Format.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
-        };
-
-    }
+    if request_parts.len() < 3 { return bad_format(); }
 
     let credit_number:&str = request_parts[2];
+
+    if (credit_number.len() == 0) { return bad_format(); }
 
     let all_digits:Vec<char> = credit_number.chars().collect();
     let digit_count = all_digits.len();
@@ -94,15 +98,7 @@ fn get_issuer(request_data:request::Request) -> response::Response {
 
     let request_parts: Vec<&str> = request_data.path.split('/').collect();
 
-    if request_parts.len() < 3 { 
-        
-        return response::Response {
-            response_code: 400,
-            body: ("Bad Format.".to_string()),
-            headers: HashMap::from([("Content-Length".to_string(), "Bad Format.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
-        };
-
-    }
+    if request_parts.len() < 3 { return bad_format(); }
 
     let credit_number:&str = request_parts[2];
     let mut issuer_name:&str = "Invalid.";
