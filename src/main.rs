@@ -20,7 +20,7 @@ fn main() {
     }
 }
 
-fn bad_format() {
+fn bad_format() -> response::Response {
 
     return response::Response {
         response_code: 400,
