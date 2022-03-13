@@ -13,6 +13,7 @@ pub struct Request {
 
 impl Request {
     
+    #[allow(dead_code)]
     pub fn request_full(self) -> String {
 
         return format!(
@@ -25,7 +26,8 @@ impl Request {
         );
 
     }
-
+    
+    #[allow(dead_code)]
     pub fn request_headers(headers:HashMap<String, String>) -> String {
 
         let mut output = "".to_owned();
