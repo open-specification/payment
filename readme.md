@@ -7,10 +7,10 @@
 
 ## Features
 
-1. **Verify Credit Card Number with Luhn Method**
+1. **Verify Credit Card Number with Luhn Method** - `/luhn/:number/`
     - The Luhn method, also known as the mod-ten method, is one of the most basic methods to verify a credit card number. Just because a credit card number may pass the luhn algorithm, does not mean that the credit card is valid.
 
-1. **Get Issuer from Credit Card Number**
+1. **Get Issuer from Credit Card Number** - `/issuer/:number/`
     - One important piece of information that can be obtained from a credit card number is the issuer. Given the number, the module can identify who the credit card issuer is, or if the credit card issuer does not exist.
 
 1. **Performance**
