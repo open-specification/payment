@@ -1,5 +1,10 @@
 # ![The Payments Module](https://github.com/open-specification/payment/blob/master/.github/cover.png?raw=true)
 
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/open-specification/payment)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/open-specification/payment)
+![GitHub top language](https://img.shields.io/github/languages/top/open-specification/payment)
+![GitHub contributors](https://img.shields.io/github/contributors/open-specification/payment?color=blue)
+
 ## Features
 
 1. **Verify Credit Card Number with Luhn Method**
