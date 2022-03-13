@@ -47,3 +47,117 @@ pub fn luhn_method(credit_number:&str) -> bool {
     return sum_digit == last_digit;
 
 }
+
+pub fn get_issuer(credit_number:&str) -> &str {
+
+    
+    if credit_number.starts_with("6759") { return "Maestro UK"; }
+    if credit_number.starts_with("676770") { return "Maestro UK"; }
+    if credit_number.starts_with("676774") { return "Maestro UK"; }
+
+    if credit_number.starts_with("357111") { return "LankaPay"; }
+    
+    if credit_number.starts_with("417500") { return "Visa Electron"; }
+    if credit_number.starts_with("4026") { return "Visa Electron"; }
+    if credit_number.starts_with("4508") { return "Visa Electron"; }
+    if credit_number.starts_with("4844") { return "Visa Electron"; }
+    if credit_number.starts_with("4913") { return "Visa Electron"; }
+    if credit_number.starts_with("4917") { return "Visa Electron"; }
+
+    if credit_number.starts_with("8600") { return "UzCard"; }
+
+    if credit_number.starts_with("9860") { return "Humo"; }
+
+    if credit_number.starts_with("6304") { return "Laser"; }
+    if credit_number.starts_with("6706") { return "Laser"; }
+    if credit_number.starts_with("6771") { return "Laser"; }
+    if credit_number.starts_with("6709") { return "Laser"; }
+
+    if credit_number.starts_with("5018") { return "Maestro"; }
+    if credit_number.starts_with("5020") { return "Maestro"; }
+    if credit_number.starts_with("5038") { return "Maestro"; }
+    if credit_number.starts_with("5893") { return "Maestro"; }
+    if credit_number.starts_with("6304") { return "Maestro"; }
+    if credit_number.starts_with("6759") { return "Maestro"; }
+    if credit_number.starts_with("6761") { return "Maestro"; }
+    if credit_number.starts_with("6762") { return "Maestro"; }
+    if credit_number.starts_with("6763") { return "Maestro"; }
+
+    if credit_number.starts_with("5019") { return "Dankort"; }
+    if credit_number.starts_with("4571") { return "Dankort-Visa"; }
+
+    if credit_number.starts_with("2200") { return "Mir"; }
+    if credit_number.starts_with("2201") { return "Mir"; }
+    if credit_number.starts_with("2202") { return "Mir"; }
+    if credit_number.starts_with("2203") { return "Mir"; }
+    if credit_number.starts_with("2204") { return "Mir"; }
+
+    if credit_number.starts_with("9792") { return "Troy"; }
+    
+    if credit_number.starts_with("637") { return "InstaPayment"; }
+    if credit_number.starts_with("638") { return "InstaPayment"; }
+    if credit_number.starts_with("639") { return "InstaPayment"; }
+
+    if credit_number.starts_with("636") { return "InterPayment"; }
+    
+    if credit_number.starts_with("353") { return "RuPay-JCB"; }
+    if credit_number.starts_with("356") { return "RuPay-JCB"; }
+
+    if credit_number.starts_with("6011") { return "Discover Card"; }
+    if credit_number.starts_with("644") { return "Discover Card"; }
+    if credit_number.starts_with("645") { return "Discover Card"; }
+    if credit_number.starts_with("646") { return "Discover Card"; }
+    if credit_number.starts_with("647") { return "Discover Card"; }
+    if credit_number.starts_with("648") { return "Discover Card"; }
+    if credit_number.starts_with("649") { return "Discover Card"; }
+    if credit_number.starts_with("65") { return "Discover Card"; }
+
+    if credit_number.starts_with("508") { return "RuPay"; }
+    if credit_number.starts_with("60") { return "RuPay"; }
+    if credit_number.starts_with("65") { return "RuPay"; }
+    if credit_number.starts_with("81") { return "RuPay"; }
+    if credit_number.starts_with("82") { return "RuPay"; }
+
+    if credit_number.starts_with("65") { return "Troy-Discover"; }
+
+    if credit_number.starts_with("51") { return "Mastercard"; }
+    if credit_number.starts_with("52") { return "Mastercard"; }
+    if credit_number.starts_with("53") { return "Mastercard"; }
+    if credit_number.starts_with("55") { return "Mastercard"; }
+
+    if credit_number.starts_with("34") { return "American Express"; }
+    if credit_number.starts_with("37") { return "American Express"; }
+    
+    if credit_number.starts_with("31") { return "China T-Union"; }
+    
+    if credit_number.starts_with("62") { return "China UnionPay"; }
+    
+    if credit_number.starts_with("36") { return "Diners Club International"; }
+    
+    if credit_number.starts_with("54") { return "Diners Club United States & Canada"; }
+
+    if credit_number.starts_with("1") { return "UATP"; }
+    
+    if credit_number.starts_with("2") { return "GPN"; }
+    if credit_number.starts_with("6") { return "GPN"; }
+    if credit_number.starts_with("7") { return "GPN"; }
+    if credit_number.starts_with("8") { return "GPN"; }
+    if credit_number.starts_with("9") { return "GPN"; }
+
+    if credit_number.starts_with("4") { return "Visa"; }
+
+    // 622126–622925: China UnionPay co-branded
+    // 60400100–60420099: UkrCard
+    
+    // 3528–3589: JCB
+
+    // 6054740–6054744: NPS Pridnestrovie
+
+    // 2221–2720: Mastercard
+
+    // 650002–650027: Verve
+    // 506099–506198: Verve
+
+    return "";
+
+}
