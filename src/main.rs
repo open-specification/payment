@@ -3,7 +3,6 @@ use std::io::prelude::*;
 use std::net::TcpListener;
 use std::net::TcpStream;
 use std::thread;
-use std::fs;
 
 mod response;
 mod request;
