@@ -37,6 +37,16 @@ fn get_issuer(request_data:request::Request) -> response::Response {
     let credit_number:&str = request_parts[2];
     let mut issuer_name:&str = "Invalid.";
 
+    if credit_number.starts_with("1") { issuer_name = "UATP"; }
+    
+    if credit_number.starts_with("2") { issuer_name = "GPN"; }
+    if credit_number.starts_with("6") { issuer_name = "GPN"; }
+    if credit_number.starts_with("7") { issuer_name = "GPN"; }
+    if credit_number.starts_with("8") { issuer_name = "GPN"; }
+    if credit_number.starts_with("9") { issuer_name = "GPN"; }
+
+    if credit_number.starts_with("4") { issuer_name = "Visa"; }
+
     if credit_number.starts_with("34") { issuer_name = "American Express"; }
     if credit_number.starts_with("37") { issuer_name = "American Express"; }
     
@@ -48,6 +58,21 @@ fn get_issuer(request_data:request::Request) -> response::Response {
     
     if credit_number.starts_with("54") { issuer_name = "Diners Club United States & Canada"; }
     
+    if credit_number.starts_with("60") { issuer_name = "RuPay"; }
+    if credit_number.starts_with("65") { issuer_name = "RuPay"; }
+    if credit_number.starts_with("81") { issuer_name = "RuPay"; }
+    if credit_number.starts_with("82") { issuer_name = "RuPay"; }
+    if credit_number.starts_with("508") { issuer_name = "RuPay"; }
+
+    if credit_number.starts_with("51") { issuer_name = "Mastercard"; }
+    if credit_number.starts_with("52") { issuer_name = "Mastercard"; }
+    if credit_number.starts_with("53") { issuer_name = "Mastercard"; }
+    if credit_number.starts_with("54") { issuer_name = "Mastercard"; }
+    if credit_number.starts_with("55") { issuer_name = "Mastercard"; }
+
+    if credit_number.starts_with("65") { issuer_name = "Troy-Discover"; }
+
+    if credit_number.starts_with("65") { issuer_name = "Discover Card"; }
     if credit_number.starts_with("6011") { issuer_name = "Discover Card"; }
     if credit_number.starts_with("644") { issuer_name = "Discover Card"; }
     if credit_number.starts_with("645") { issuer_name = "Discover Card"; }
@@ -55,16 +80,9 @@ fn get_issuer(request_data:request::Request) -> response::Response {
     if credit_number.starts_with("647") { issuer_name = "Discover Card"; }
     if credit_number.starts_with("648") { issuer_name = "Discover Card"; }
     if credit_number.starts_with("649") { issuer_name = "Discover Card"; }
-    if credit_number.starts_with("65") { issuer_name = "Discover Card"; }
     
     // 622126–622925: China UnionPay co-branded
     // 60400100–60420099: UkrCard
-    
-    if credit_number.starts_with("60") { issuer_name = "RuPay"; }
-    if credit_number.starts_with("65") { issuer_name = "RuPay"; }
-    if credit_number.starts_with("81") { issuer_name = "RuPay"; }
-    if credit_number.starts_with("82") { issuer_name = "RuPay"; }
-    if credit_number.starts_with("508") { issuer_name = "RuPay"; }
     
     if credit_number.starts_with("353") { issuer_name = "RuPay-JCB"; }
     if credit_number.starts_with("356") { issuer_name = "RuPay-JCB"; }
@@ -77,14 +95,14 @@ fn get_issuer(request_data:request::Request) -> response::Response {
 
     // 3528–3589: JCB
 
+    if credit_number.starts_with("8600") { issuer_name = "UzCard"; }
+
+    if credit_number.starts_with("9860") { issuer_name = "Humo"; }
+
     if credit_number.starts_with("6304") { issuer_name = "Laser"; }
     if credit_number.starts_with("6706") { issuer_name = "Laser"; }
     if credit_number.starts_with("6771") { issuer_name = "Laser"; }
     if credit_number.starts_with("6709") { issuer_name = "Laser"; }
-
-    if credit_number.starts_with("6759") { issuer_name = "Maestro UK"; }
-    if credit_number.starts_with("676770") { issuer_name = "Maestro UK"; }
-    if credit_number.starts_with("676774") { issuer_name = "Maestro UK"; }
 
     if credit_number.starts_with("5018") { issuer_name = "Maestro"; }
     if credit_number.starts_with("5020") { issuer_name = "Maestro"; }
@@ -109,14 +127,6 @@ fn get_issuer(request_data:request::Request) -> response::Response {
 
     // 2221–2720: Mastercard
 
-    if credit_number.starts_with("51") { issuer_name = "Mastercard"; }
-    if credit_number.starts_with("52") { issuer_name = "Mastercard"; }
-    if credit_number.starts_with("53") { issuer_name = "Mastercard"; }
-    if credit_number.starts_with("54") { issuer_name = "Mastercard"; }
-    if credit_number.starts_with("55") { issuer_name = "Mastercard"; }
-
-    if credit_number.starts_with("65") { issuer_name = "Troy-Discover"; }
-
     if credit_number.starts_with("9792") { issuer_name = "Troy"; }
 
     if credit_number.starts_with("4026") { issuer_name = "Visa Electron"; }
@@ -125,25 +135,15 @@ fn get_issuer(request_data:request::Request) -> response::Response {
     if credit_number.starts_with("4844") { issuer_name = "Visa Electron"; }
     if credit_number.starts_with("4913") { issuer_name = "Visa Electron"; }
     if credit_number.starts_with("4917") { issuer_name = "Visa Electron"; }
-
-    if credit_number.starts_with("4") { issuer_name = "Visa"; }
-
-    if credit_number.starts_with("1") { issuer_name = "UATP"; }
     
     // 650002–650027: Verve
     // 506099–506198: Verve
 
     if credit_number.starts_with("357111") { issuer_name = "LankaPay"; }
 
-    if credit_number.starts_with("8600") { issuer_name = "UzCard"; }
-
-    if credit_number.starts_with("9860") { issuer_name = "Humo"; }
-
-    if credit_number.starts_with("2") { issuer_name = "GPN"; }
-    if credit_number.starts_with("6") { issuer_name = "GPN"; }
-    if credit_number.starts_with("7") { issuer_name = "GPN"; }
-    if credit_number.starts_with("2") { issuer_name = "GPN"; }
-    if credit_number.starts_with("9") { issuer_name = "GPN"; }
+    if credit_number.starts_with("6759") { issuer_name = "Maestro UK"; }
+    if credit_number.starts_with("676770") { issuer_name = "Maestro UK"; }
+    if credit_number.starts_with("676774") { issuer_name = "Maestro UK"; }
 
     return response::Response {
         response_code: 200,
