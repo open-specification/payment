@@ -36,7 +36,64 @@ fn get_luhn(request_data:request::Request) -> response::Response {
 
     let credit_number:&str = request_parts[2];
 
+    let all_digits:Vec<char> = credit_number.chars().collect();
+    let digit_count = all_digits.len();
+    let last_digit = all_digits[digit_count - 1];
+    let mut other_digits = &all_digits[0..(digit_count - 1)];
+    let mut real_digits = Vec::new();
 
+    let mut index = 0;
+    for digit in other_digits {
+
+        real_digits.push((*digit as u8) - ('0' as u8));
+        index = index + 1;
+
+    }
+
+    let mut sum = 0;
+
+    index = 0;
+    for mut digit in real_digits {
+        
+        if (index % 2 == 0) {
+
+            digit = digit * 2;
+
+            if (digit > 9) {
+
+                let first = digit % 10;
+                let second = digit / 10;
+
+                digit = first + second;
+
+            } 
+
+        }
+
+        index = index + 1;
+        sum = sum + digit;
+        
+    }
+
+    let sum_digit = ((sum % 10) + ('0' as u8)) as char;
+
+    if sum_digit == last_digit {
+
+        return response::Response {
+            response_code: 200,
+            body: ("Valid.".to_string()),
+            headers: HashMap::from([("Content-Length".to_string(), "Valid.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
+        };
+
+    } else {
+        
+        return response::Response {
+            response_code: 400,
+            body: ("Invalid.".to_string()),
+            headers: HashMap::from([("Content-Length".to_string(), "Invalid.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
+        };
+
+    }
 
 }
 
