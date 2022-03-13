@@ -45,7 +45,30 @@ fn get_valid_thru(request_data:request::Request) -> response::Response {
     if month_string.len() == 0 { return bad_format(); }
     if year_string.len() == 0 { return bad_format(); }
 
-    return bad_format();
+    // Convert Strings to U32
+    let month:u32 = month_string.parse().unwrap();
+    let year:u32 = year_string.parse().unwrap();
+
+    // Check if its Valid
+    if payment::get_valid_thru(month, year) {
+
+        // If Valid, Respond "Valid"
+        return response::Response {
+            response_code: 200,
+            body: ("Valid.".to_string()),
+            headers: HashMap::from([("Content-Length".to_string(), "Valid.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
+        };
+
+    } else {
+
+        // If Invalid, Respond "Invalid"
+        return response::Response {
+            response_code: 200,
+            body: ("Invalid.".to_string()),
+            headers: HashMap::from([("Content-Length".to_string(), "Invalid.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
+        };
+
+    }
 
 }
 
@@ -121,6 +144,7 @@ fn handle_connection(mut stream: TcpStream) {
 
         "issuer" => get_issuer(request_data),
         "luhn" => get_luhn(request_data),
+        "date" => get_valid_thru(request_data),
         _ => response::Response {
             response_code: 404,
             body: ("Endpoint Not Found".to_string()),

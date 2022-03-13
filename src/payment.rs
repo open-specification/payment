@@ -51,12 +51,17 @@ pub fn luhn_method(credit_number:&str) -> bool {
 
 }
 
-pub fn get_valid_thru(month:i32, year:i32) -> bool {
+pub fn get_valid_thru(month:u32, year:u32) -> bool {
 
+    // Get the current date
     let dt = Utc::now();
+    let adjusted_year = (year as i32) + 2000;
+    let current_year = dt.year();
+    let current_month = dt.month();
 
     // Check if Expired
-    if dt.year() == (year + 2000) { return false; }
+    if current_year > adjusted_year { return false; }
+    if current_month > month { return false; }
 
     return true;
 
