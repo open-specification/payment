@@ -1,3 +1,6 @@
+use chrono::Utc;
+use chrono::Datelike;
+
 pub fn luhn_method(credit_number:&str) -> bool {
 
     // Initialize General Variables
@@ -45,6 +48,17 @@ pub fn luhn_method(credit_number:&str) -> bool {
     // Convert Sum to Char, and Check if Equal to Last Digit
     let sum_digit = ((sum % 10) + ('0' as u8)) as char;
     return sum_digit == last_digit;
+
+}
+
+pub fn get_valid_thru(month:i32, year:i32) -> bool {
+
+    let dt = Utc::now();
+
+    // Check if Expired
+    if dt.year() == (year + 2000) { return false; }
+
+    return true;
 
 }
 

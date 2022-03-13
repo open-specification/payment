@@ -31,6 +31,24 @@ fn bad_format() -> response::Response {
 
 }
 
+fn get_valid_thru(request_data:request::Request) -> response::Response {
+
+    // Get the Parts of the Path
+    let request_parts: Vec<&str> = request_data.path.split('/').collect();
+    if request_parts.len() < 4 { return bad_format(); }
+
+    // Get the Month and Year String
+    let month_string:&str = request_parts[2];
+    let year_string:&str = request_parts[3];
+
+    // Make Sure the Month and Year are Correct Length
+    if month_string.len() == 0 { return bad_format(); }
+    if year_string.len() == 0 { return bad_format(); }
+
+    return bad_format();
+
+}
+
 fn get_luhn(request_data:request::Request) -> response::Response {
 
     // Get the Credit Card Number from the Path
