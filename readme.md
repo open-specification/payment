@@ -21,4 +21,4 @@
 
 ## Licensing
 
-See the licensing.md File for more information.
+The code is under the BSL license. See the [licensing.md](./license.md) file for more information.
