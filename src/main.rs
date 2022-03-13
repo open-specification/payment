@@ -20,6 +20,26 @@ fn main() {
     }
 }
 
+fn get_luhn(request_data:request::Request) -> response::Response {
+
+    let request_parts: Vec<&str> = request_data.path.split('/').collect();
+
+    if request_parts.len() < 3 { 
+        
+        return response::Response {
+            response_code: 400,
+            body: ("Bad Format.".to_string()),
+            headers: HashMap::from([("Content-Length".to_string(), "Bad Format.".len().to_string()), ("Content-Type".to_string(), "text/html".to_string())])
+        };
+
+    }
+
+    let credit_number:&str = request_parts[2];
+
+    
+
+}
+
 fn get_issuer(request_data:request::Request) -> response::Response {
 
     let request_parts: Vec<&str> = request_data.path.split('/').collect();
@@ -67,7 +87,7 @@ fn get_issuer(request_data:request::Request) -> response::Response {
     if credit_number.starts_with("51") { issuer_name = "Mastercard"; }
     if credit_number.starts_with("52") { issuer_name = "Mastercard"; }
     if credit_number.starts_with("53") { issuer_name = "Mastercard"; }
-    if credit_number.starts_with("54") { issuer_name = "Mastercard"; }
+    // if credit_number.starts_with("54") { issuer_name = "Mastercard"; }
     if credit_number.starts_with("55") { issuer_name = "Mastercard"; }
 
     if credit_number.starts_with("65") { issuer_name = "Troy-Discover"; }
