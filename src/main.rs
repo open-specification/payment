@@ -62,15 +62,16 @@ fn get_luhn(request_data:request::Request) -> response::Response {
 
 fn get_issuer(request_data:request::Request) -> response::Response {
 
+    // Get the Credit Card Number, and Run it Through the Issuer Function
     let request_parts: Vec<&str> = request_data.path.split('/').collect();
-
     if request_parts.len() < 3 { return bad_format(); }
-
     let credit_number = request_parts[2];
     let issuer_name = payment::get_issuer(credit_number);
 
+    // Check if Issuer Exists
     if issuer_name == "" { 
 
+        // If Not, Return a Response Saying "Invalid."
         return response::Response {
             response_code: 200,
             body: ("Invalid.".to_string()),
@@ -79,6 +80,7 @@ fn get_issuer(request_data:request::Request) -> response::Response {
 
     }
 
+    // Return the Issuer
     return response::Response {
         response_code: 200,
         body: (issuer_name.to_string()),
