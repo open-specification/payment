@@ -1,9 +1,9 @@
 # ![The Payments Module](https://github.com/open-specification/payment/blob/master/.github/cover.png?raw=true)
 
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/open-specification/payment)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/y/open-specification/payment)
-![GitHub top language](https://img.shields.io/github/languages/top/open-specification/payment)
-![GitHub contributors](https://img.shields.io/github/contributors/open-specification/payment?color=blue)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/open-specification/payment?color=teal)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/y/open-specification/payment?color=teal)
+![GitHub top language](https://img.shields.io/github/languages/top/open-specification/payment?color=teal)
+![GitHub contributors](https://img.shields.io/github/contributors/open-specification/payment?color=teal)
 
 ## Features
 
