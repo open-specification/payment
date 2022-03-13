@@ -36,7 +36,7 @@ fn get_luhn(request_data:request::Request) -> response::Response {
 
     let credit_number:&str = request_parts[2];
 
-    
+
 
 }
 
@@ -186,6 +186,7 @@ fn handle_connection(mut stream: TcpStream) {
     let response_data:response::Response = match request_intro {
 
         "issuer" => get_issuer(request_data),
+        "luhn" => get_luhn(request_data),
         _ => response::Response {
             response_code: 404,
             body: ("Endpoint Not Found".to_string()),
